@@ -16,14 +16,16 @@ export Euclidean,
        Cityblock,
        Minkowski,
        Chebyshev,
-       Hamming
+       Hamming,
+       NEucRestMan
 
 # Change this to enable debugging
 const DEBUG = false
 
 abstract type NNTree{V <: AbstractVector,P <: Metric} end
 
-const MinkowskiMetric = Union{Euclidean,Chebyshev,Cityblock,Minkowski}
+include("NEucRestMan.jl")
+const MinkowskiMetric = Union{Euclidean,Chebyshev,Cityblock,Minkowski,NEucRestMan}
 
 function check_input(::NNTree{V1}, ::AbstractVector{V2}) where {V1, V2 <: AbstractVector}
     if length(V1) != length(V2)
@@ -55,5 +57,6 @@ include("brute_tree.jl")
 include("kd_tree.jl")
 include("ball_tree.jl")
 include("tree_ops.jl")
+
 
 end # module

@@ -1,5 +1,9 @@
 manhattanDistanceModifier = 0.5
 
+""" Creates a metric with the following distance function:
+Given two vectors a,b:
+dist(a,b) = euclidean_dist(first N elements of a, " " " " b) + k * manhattan_distance(rest of a, " " b)
+"""
 struct NEucRestMan <: Metric
     N::Int
     k::Float64
